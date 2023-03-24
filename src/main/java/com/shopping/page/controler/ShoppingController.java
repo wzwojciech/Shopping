@@ -20,15 +20,15 @@ public class ShoppingController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getShoppingList")
     public List<ShoppingDto> getShoppingList() {
-     // return mapper.mapToShoppingDtoList(service.getAllShopping());
-        return new ArrayList<>();
+     return mapper.mapToShoppingDtoList(service.getAllShopping());
+     //return new ArrayList<>();
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getShooping")
     public ShoppingDto getOneItem(@RequestParam Integer id) throws ShoppingNotFoundException {
-        //return mapper.mapToShoppingDto(service.getShopping(id).orElseThrow(ShoppingNotFoundException::new));
-        return new ShoppingDto(1,"test", "teest2");
+        return mapper.mapToShoppingDto(service.getShopping(id).orElseThrow(ShoppingNotFoundException::new));
+        //return new ShoppingDto(1,"test", "teest2");
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createShopping")
